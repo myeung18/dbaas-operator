@@ -133,6 +133,32 @@ rules:
   - patch
   - update
 - apiGroups:
+  - dbaas.redhat.com
+  resources:
+  - dbaasfeatureflags
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - dbaas.redhat.com
+  resources:
+  - dbaasfeatureflags/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - dbaas.redhat.com
+  resources:
+  - dbaasfeatureflags/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - monitoring.rhobs
   resources:
   - monitoringstacks

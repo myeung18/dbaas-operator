@@ -23,6 +23,11 @@ spec:
       kind: DBaaSConnection
       name: dbaasconnections.dbaas.redhat.com
       version: v1alpha1
+    - description: DBaaSFeatureFlag is the Schema for the dbaasfeatureflags API
+      displayName: DBaa SFeature Flag
+      kind: DBaaSFeatureFlag
+      name: dbaasfeatureflags.dbaas.redhat.com
+      version: v1alpha1
     - description: DBaaSInstance is the Schema for the dbaasinstances API
       displayName: DBaaSInstance
       kind: DBaaSInstance
