@@ -8,7 +8,8 @@ type ObsTogglerRouter struct {
 	toggleConfig *v1alpha1.ToggleConfig
 }
 
-func NewObsToggleRouter(config *v1alpha1.ToggleConfig) *ObsTogglerRouter {
+func NewObsToggleRouter() *ObsTogglerRouter {
+	config := &v1alpha1.ToggleConfig{}
 	return &ObsTogglerRouter{toggleConfig: config}
 }
 

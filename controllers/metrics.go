@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/RHEcosystemAppEng/dbaas-operator/controllers/flags"
 	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -269,6 +270,10 @@ func SetConnectionMetrics(provider string, account string, connection dbaasv1alp
 
 // setConnectionStatusMetrics set the metrics based on connection status
 func setConnectionStatusMetrics(provider string, account string, connection dbaasv1alpha1.DBaaSConnection) {
+	objToggleRouter := flags.NewObsToggleRouter()
+	if !objToggleRouter.IsObsConnectionStatusMetricOn() {
+		return
+	}
 	for _, cond := range connection.Status.Conditions {
 		if cond.Type == dbaasv1alpha1.DBaaSConnectionReadyType {
 			DBaaSConnectionStatusGauge.DeletePartialMatch(prometheus.Labels{metricLabelName: connection.Name, metricLabelNameSpace: connection.Namespace})
