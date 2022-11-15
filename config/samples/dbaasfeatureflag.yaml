@@ -1,0 +1,20 @@
+apiVersion: v1
+items:
+- apiVersion: dbaas.redhat.com/v1alpha1
+  kind: DBaaSFeatureFlag
+  metadata:
+    creationTimestamp: "2022-11-15T16:29:19Z"
+    generation: 2
+    name: dbaasfeatureflag-sample
+    namespace: openshift-dbaas-operator
+    resourceVersion: "1446977"
+    uid: c64911c9-79e4-463f-a82b-2c77372a2582
+  spec:
+    toggleConfig:
+    - displayDescription: Enable/Disable sending Connection status metric to observability
+      name: Obversability Connection status
+      value: false
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

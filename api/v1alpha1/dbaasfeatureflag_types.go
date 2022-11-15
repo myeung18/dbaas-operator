@@ -34,7 +34,7 @@ type DBaaSFeatureFlagSpec struct {
 type ToggleConfig struct {
 	Name        string `json:"name"`
 	Value       bool   `json:"value"`
-	Description string `json:"displayDescription"`
+	Description string `json:"description"`
 }
 
 // DBaaSFeatureFlagStatus defines the observed state of DBaaSFeatureFlag
