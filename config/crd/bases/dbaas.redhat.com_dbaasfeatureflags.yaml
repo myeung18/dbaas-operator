@@ -39,10 +39,16 @@ spec:
               toggleConfig:
                 items:
                   properties:
-                    config:
-                      additionalProperties:
-                        type: boolean
-                      type: object
+                    displayDescription:
+                      type: string
+                    name:
+                      type: string
+                    value:
+                      type: boolean
+                  required:
+                  - displayDescription
+                  - name
+                  - value
                   type: object
                 type: array
             required:

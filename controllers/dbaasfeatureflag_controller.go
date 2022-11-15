@@ -19,18 +19,13 @@ package controllers
 import (
 	"context"
 
-	"k8s.io/apimachinery/pkg/runtime"
-	ctrl "sigs.k8s.io/controller-runtime"
-	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/log"
-
 	dbaasv1alpha1 "github.com/RHEcosystemAppEng/dbaas-operator/api/v1alpha1"
+	ctrl "sigs.k8s.io/controller-runtime"
 )
 
 // DBaaSFeatureFlagReconciler reconciles a DBaaSFeatureFlag object
 type DBaaSFeatureFlagReconciler struct {
-	client.Client
-	Scheme *runtime.Scheme
+	*DBaaSReconciler
 }
 
 //+kubebuilder:rbac:groups=dbaas.redhat.com,resources=dbaasfeatureflags,verbs=get;list;watch;create;update;patch;delete
@@ -47,7 +42,9 @@ type DBaaSFeatureFlagReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.11.0/pkg/reconcile
 func (r *DBaaSFeatureFlagReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	_ = log.FromContext(ctx)
+	//_ = log.FromContext(ctx)
+	logger := ctrl.LoggerFrom(ctx)
+	logger.Info("feasutre flag controller", "k", " * value * ")
 
 	// TODO(user): your logic here
 

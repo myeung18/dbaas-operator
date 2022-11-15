@@ -32,7 +32,9 @@ type DBaaSFeatureFlagSpec struct {
 }
 
 type ToggleConfig struct {
-	Config map[string]bool `json:"config,omitempty"`
+	Name        string `json:"name"`
+	Value       bool   `json:"value"`
+	Description string `json:"displayDescription"`
 }
 
 // DBaaSFeatureFlagStatus defines the observed state of DBaaSFeatureFlag
@@ -45,6 +47,7 @@ type DBaaSFeatureFlagStatus struct {
 //+kubebuilder:subresource:status
 
 // DBaaSFeatureFlag is the Schema for the dbaasfeatureflags API
+//+operator-sdk:csv:customresourcedefinitions:displayName="DBaaS Feature Flags"
 type DBaaSFeatureFlag struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

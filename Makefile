@@ -166,7 +166,7 @@ build: generate fmt vet ## Build manager binary.
 run: sdk-manifests vet ## Run a controller from your host.
 	go run ./main.go
 
-docker-build: test ## Build docker image with the manager.
+docker-build: ## Build docker image with the manager.
 	$(CONTAINER_ENGINE) build --pull --platform linux/amd64 -t ${IMG} .
 
 docker-push: ## Push docker image with the manager.
@@ -194,18 +194,17 @@ deploy-olm:
 	oc apply -f config/samples/catalog-subscription.yaml
 
 undeploy-olm:
-	-oc delete subscriptions.operators.coreos.com dbaas-operator
-	-oc delete operatorgroup dbaas-operator-group
-	-oc delete clusterserviceversion dbaas-operator.v${VERSION}
+	oc delete subscriptions.operators.coreos.com dbaas-operator
+	oc delete operatorgroup dbaas-operator-group
+	oc delete clusterserviceversion dbaas-operator.v${VERSION}
 
 catalog-update:
-	-oc delete catalogsource dbaas-operator -n openshift-marketplace
-	-oc delete catalogsource mongodb-atlas-catalogsource -n openshift-marketplace
-	-oc delete catalogsource crunchy-bridge-catalogsource -n openshift-marketplace
-	-oc delete catalogsource ccapi-k8s-catalogsource -n openshift-marketplace
-	-oc delete catalogsource observability-catalogsource -n openshift-marketplace
-	-oc delete catalogsource rds-provider-catalogsource -n openshift-marketplace
-	 oc apply -f config/samples/catalog-source.yaml
+	oc delete catalogsource mongodb-atlas-catalogsource -n openshift-marketplace
+	oc delete catalogsource crunchy-bridge-catalogsource -n openshift-marketplace
+	oc delete catalogsource ccapi-k8s-catalogsource -n openshift-marketplace
+	oc delete catalogsource observability-catalogsource -n openshift-marketplace
+	oc delete catalogsource rds-provider-catalogsource -n openshift-marketplace
+	oc delete -f config/samples/catalog-source.yaml
 
 deploy-sample-app:
 	oc apply -f config/samples/quarkus-runner/deployment.yaml

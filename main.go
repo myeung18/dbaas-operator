@@ -192,6 +192,12 @@ func main() {
 			os.Exit(1)
 		}
 	}
+	if err = (&controllers.DBaaSFeatureFlagReconciler{
+		DBaaSReconciler: DBaaSReconciler,
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "DBaaSFeatureFlag")
+		os.Exit(1)
+	}
 	if err = (&controllers.DBaaSPolicyReconciler{
 		DBaaSReconciler: DBaaSReconciler,
 	}).SetupWithManager(mgr); err != nil {
@@ -219,13 +225,6 @@ func main() {
 		OcpVersion:      ocpVersion,
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "DBaaSPlatform")
-		os.Exit(1)
-	}
-	if err = (&controllers.DBaaSFeatureFlagReconciler{
-		Client: mgr.GetClient(),
-		Scheme: mgr.GetScheme(),
-	}).SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to create controller", "controller", "DBaaSFeatureFlag")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder

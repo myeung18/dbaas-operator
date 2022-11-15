@@ -1,8 +1,9 @@
 package controllers
 
 import (
-	"github.com/RHEcosystemAppEng/dbaas-operator/controllers/flags"
 	"time"
+
+	"github.com/RHEcosystemAppEng/dbaas-operator/controllers/flags"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
